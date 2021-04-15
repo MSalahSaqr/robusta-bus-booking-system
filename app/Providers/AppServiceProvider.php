@@ -13,7 +13,21 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        //Repos
+        $this->app->bind(
+            'App\Repositories\Interfaces\TripRepositoryInterface',
+            'App\Repositories\TripRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\Interfaces\ReservationRepositoryInterface',
+            'App\Repositories\ReservationRepository'
+        );
+        //Services
+        $this->app->bind(
+            'App\Services\Interfaces\TripServiceInterface',
+            'App\Services\TripService'
+        );
+
     }
 
     /**
