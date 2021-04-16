@@ -15,19 +15,93 @@ class RegisterController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+/**
+ * @OA\Post(
+ * path="/api/login",
+ * summary="Sign in",
+ * description="Login by email, password",
+ * operationId="authLogin",
+ * tags={"auth"},
+ * @OA\RequestBody(
+ *    required=true,
+ *    description="Pass user credentials",
+ *    @OA\JsonContent(
+ *       required={"email","password"},
+ *       @OA\Property(property="email", type="string", format="email", example="user1@mail.com"),
+ *       @OA\Property(property="password", type="string", format="password", example="PassWord12345"),
+ *    ),
+ * ),
+ *
+ *  @OA\Response(
+ *    response=200,
+ *    description="success",
+ * @OA\MediaType(
+ *              mediaType="application/json",
+ *          )
+ * ),
+ * @OA\Response(
+ *    response=400,
+ *    description="Bad Request response",
+ * @OA\MediaType(
+ *              mediaType="application/json",
+ *          )
+ * ),
+ * @OA\Response(
+ *    response=422,
+ *    description="Wrong credentials response",
+ * @OA\MediaType(
+ *              mediaType="application/json",
+ *          )
+ *     )
+ * )
+ *  @OA\Post(
+ * path="/api/register",
+ * summary="sign up",
+ * description="Login by email, password",
+ * operationId="authLogin",
+ * tags={"auth"},
+ * @OA\RequestBody(
+ *    required=true,
+ *    description="Pass user credentials",
+ *    @OA\JsonContent(
+ *       required={"name","email","password","c_password"},
+ *       @OA\Property(property="email", type="string", format="email", example="user1@mail.com"),
+ *       @OA\Property(property="name", type="string", example="Robustan"),
+ *       @OA\Property(property="password", type="string", format="password", example="PassWord12345"),
+ *       @OA\Property(property="re_password", type="string", format="password", example="PassWord12345"),
+ *
+ *    ),
+ * ),
+ * @OA\Response(
+ *    response=400,
+ *    description="Bad Request",
+ * @OA\MediaType(
+ *              mediaType="application/json",
+ *          )
+ *     ),
+ * @OA\Response(
+ *    response=200,
+ *    description="Registered successfully",
+ * @OA\MediaType(
+ *              mediaType="application/json",
+ *          )
+ *     )
+ * )
+ */
+
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required',
-            'c_password' => 'required|same:password',
+            're_password' => 'required|same:password',
         ]);
 
         if ($validator->fails()) {
             return response()->json([
-                'body' => $validator->errors(),
                 'message' => 'Validation Error',
+                'body' => $validator->errors(),
             ], 400);
         }
 
@@ -75,8 +149,8 @@ class RegisterController extends Controller
 
         } else {
             return response()->json([
-                'errors' => 'unauthorized',
-            ], 401);
+                'error' => 'Wrong credentials',
+            ], 422);
 
         }
     }

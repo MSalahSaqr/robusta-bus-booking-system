@@ -15,15 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::group([
-    'prefix' => 'v1',
-], function () {
-    Route::post('register', [RegisterController::class, 'register']);
-    Route::post('login', [RegisterController::class, 'login']);
+Route::post('register', [RegisterController::class, 'register']);
+Route::post('login', [RegisterController::class, 'login']);
 
-    Route::middleware('auth:api')->group(function () {
-        Route::post('seats/ReserveSeat', [ReservationController::class, 'reserve']);
-        Route::get('seats/availableseats', [ReservationController::class, 'show']);
-    });
-
+Route::middleware('auth:api')->group(function () {
+    Route::post('seats/reserveseat', [ReservationController::class, 'reserve']);
+    Route::get('seats/availableseats', [ReservationController::class, 'show']);
 });
