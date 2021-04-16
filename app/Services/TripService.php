@@ -121,10 +121,10 @@ class TripService implements TripServiceInterface
         return $seats;
     }
 
-    public function reserveSeat($seatId, $fromStationId, $toStationId, $tripId)
+    public function reserveSeat($seatId, $fromStationId, $toStationId, $tripId, $userId)
     {
         if ($this->CheckSeatAvailability($seatId, $fromStationId, $toStationId, $tripId)) {
-            $reservation = $this->reservationRepo->createReservation($seatId, $fromStationId, $toStationId, $tripId);
+            $reservation = $this->reservationRepo->createReservation($seatId, $fromStationId, $toStationId, $tripId, $userId);
             return $reservation;
         } else {
             return null;
