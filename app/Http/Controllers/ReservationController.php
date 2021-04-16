@@ -32,7 +32,8 @@ class ReservationController extends Controller
             $messages = $validator->messages();
             $errors = $messages->all();
             return response()->json([
-                'errors' => $errors,
+                'message' => 'Validation Error',
+                'body' => $errors,
             ], 400);
         }
 
@@ -61,11 +62,13 @@ class ReservationController extends Controller
             $messages = $validator->messages();
             $errors = $messages->all();
             return response()->json([
-                'errors' => $errors,
+                'message' => 'Validation Error',
+                'body' => $errors,
             ], 400);
-        }
 
-        $reservation = $this->tripService->reserveSeat(3, 3, 2, 1);
+        }
+        $user = $request->user();
+        $reservation = $this->tripService->reserveSeat($request->seatId, $request->fromStation, $request->toStation, $request->tripId, $user['id']);
         if ($reservation == null) {
             return response()->json([
                 'error' => 'Seat Not Available',
