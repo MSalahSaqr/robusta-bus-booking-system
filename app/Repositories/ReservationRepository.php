@@ -11,7 +11,7 @@ class ReservationRepository implements ReservationRepositoryInterface
         $Reservation->seat_id = $seatId;
         $Reservation->from_station = $fromStationId;
         $Reservation->to_station = $toStationId;
-        $Reservation->trip_id = $toStationId;
+        $Reservation->trip_id = $tripId;
         $Reservation->user_id = $userId;
         $Reservation->save();
         return $Reservation;
