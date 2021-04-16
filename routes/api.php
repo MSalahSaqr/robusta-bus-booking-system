@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReservationController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,10 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([
+    'prefix' => 'v1',
+], function () {
+    Route::post('register', [RegisterController::class, 'register']);
+    Route::post('login', [RegisterController::class, 'login']);
+
+    Route::middleware('auth:api')->group(function () {
+        Route::post('seats/ReserveSeat', [ReservationController::class, 'reserve']);
+        Route::get('seats/availableseats', [ReservationController::class, 'show']);
+    });
+
 });
-
-Route::get('Seats/AvailableSeats', [ReservationController::class, 'show']);
-
-Route::get('Seats/ReserveSeat', [ReservationController::class, 'reserve']);
