@@ -18,12 +18,13 @@ This task is a part of interview proccess of Rubusta. I was requird to create 2 
 
 ## The Data in the Database 
 
-- The Database contains 2 Trips with ids [1,2]
+- The Database contains 3 Trips with ids [1...3]
 - Every trip has a route which has multiple stations
 - Every trip has a bus which has multiple seats
 - for testing the trip with id = 1 has a bus with 12 seats with ids[1...12] and route with 4 stations {id:1, name:cairo} {id=2, name:Mansoura} {id=3, name:Banha} {id=4, name:Tanta} which are ordered {id:1, order:1} {id:3, order:2} {id:2, order:3} {id:4, order:4}
 - Some seates are reserved for trip id = 1
-- Trip id = 2's bus has no seats yet.
+- Trip id = 2's bus has no seats yet
+- Trip id = 3's route has no stations
 - swagger link is /api/docs
 
 ### Remarks on the design
