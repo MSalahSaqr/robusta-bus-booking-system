@@ -9,6 +9,9 @@ This task is a part of interview proccess of Rubusta. I was requird to create 2 
 - Download the DB dumb from this [link](https://drive.google.com/file/d/14Iut0lOdE475NoWNNsmgejMZXSkpK69c/view?usp=sharing)
 - Restore the dumb to MySQL server
 - Set your DB credintials and other required settings in the env file (address,port,username,password)
+- run the command *composer install* to install all dependacies
+- run the command *php artisan passport:keys* to generate keys
+- run the command *php artisan key:generate* to set keys
 - Use artisan to serve your app (you can also host the app on any server of your choice)
 
 ## The Data in the Database 
