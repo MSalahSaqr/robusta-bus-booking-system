@@ -12,7 +12,9 @@ This task is a part of interview proccess of Rubusta. I was requird to create 2 
 - run the command *composer install* to install all dependacies
 - run the command *php artisan passport:keys* to generate keys
 - run the command *php artisan key:generate* to set keys
+- run the command *php artisan passport:client --personal* and name it
 - Use artisan to serve your app (you can also host the app on any server of your choice)
+- you can register a new user and email or use the ones in the database already (U: "user1@mail.com" , P: "PassWord12345")
 
 ## The Data in the Database 
 
