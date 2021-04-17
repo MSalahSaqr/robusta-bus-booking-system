@@ -15,6 +15,7 @@ This task is a part of interview proccess of Rubusta. I was requird to create 2 
 - run the command *php artisan passport:client --personal* and name it
 - Use artisan to serve your app (you can also host the app on any server of your choice)
 - you can register a new user and email or use the ones in the database already (U: "user1@mail.com" , P: "PassWord12345")
+- swagger link is /api/docs
 
 ## The Data in the Database 
 
@@ -25,7 +26,6 @@ This task is a part of interview proccess of Rubusta. I was requird to create 2 
 - Some seates are reserved for trip id = 1
 - Trip id = 2's bus has no seats yet
 - Trip id = 3's route has no stations
-- swagger link is /api/docs
 
 ### Remarks on the design
 
