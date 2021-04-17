@@ -5,7 +5,7 @@ This task is a part of interview proccess of Rubusta. I was requird to create 2 
 
 ## How to Run
 
-- Pull the repository
+- clone the repository
 - Download the DB dumb from this [link](https://drive.google.com/file/d/14Iut0lOdE475NoWNNsmgejMZXSkpK69c/view?usp=sharing)
 - Restore the dumb to MySQL server
 - Set your DB credintials and other required settings in the env file (address,port,username,password)
