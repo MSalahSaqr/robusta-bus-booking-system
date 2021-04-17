@@ -68,6 +68,10 @@ class TripService implements TripServiceInterface
 
     private function CheckSeatAvailablityHelper($seatWithReservations, $fromStationId, $toStationId, $stationsOrders)
     {
+        if (!array_key_exists($fromStationId, $stationsOrders) && !array_key_exists($toStationId, $stationsOrders)) {
+            throw new NotFoundException('Stations not available on this trip route by IDs( ' . $fromStationId . ' , ' . $toStationId . ' )');
+        }
+
         if (!array_key_exists($fromStationId, $stationsOrders)) {
             throw new NotFoundException('Station not found by ID ' . $fromStationId);
         }
