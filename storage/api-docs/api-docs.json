@@ -221,7 +221,7 @@
                     }
                 },
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "success",
                         "content": {
                             "application/json": {}

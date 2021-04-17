@@ -73,7 +73,7 @@ use Illuminate\Support\Facades\Validator;
  *    ),
  *),
  *  @OA\Response(
- *    response=200,
+ *    response=201,
  *    description="success",
  *    @OA\MediaType(
  *              mediaType="application/json",
